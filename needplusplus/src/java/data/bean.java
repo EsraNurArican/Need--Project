@@ -169,7 +169,8 @@ public class bean {
     public static void main(String arg[]) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
         bean dbka=new bean();
          dbka.Connect();
-        //dbka.setName("evrem");
+         // A lil change for testing.. ok, Now push this commit, 
+        dbka.setName("evrem");
         //dbka.setPassword("dur");
       //  dbka.save();
       
