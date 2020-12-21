@@ -51,6 +51,7 @@ public void userList(){
         e.printStackTrace();
     }
 }
+<<<<<<< Updated upstream
 
 
 
@@ -87,4 +88,10 @@ public static void main(String arg[]){
         // NeedPostDataBaseLayer needPostDB=new NeedPostDataBaseLayer();
         dbka.NeedPostsList();
     }
+=======
+    public static void main(String arg[]){
+            DBkatmani dbka=new DBkatmani();
+            dbka.userList();
+        }
+>>>>>>> Stashed changes
 }
