@@ -29,32 +29,33 @@
                 <div class="modal-body" >
                     <h:form><center>
                         
-                        <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Name" value="#{managedBeanSinifi.name}"  /><br/><br/>
+                        <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Name" value="#{bean.name}"  /><br/><br/>
 
-                        <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Surname" value="#{managedBeanSinifi.surname}"/><br/><br/>
+                        <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Surname" value="#{bean.surname}"/><br/><br/>
 
-                        <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Birthday" value="#{managedBeanSinifi.birthday}" /><br/><br/>
+                        <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Birthday" value="#{bean.birthday}" /><br/><br/>
 
-                        <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="E-mail" value="#{managedBeanSinifi.mail}"/><br/><br/>
+                        <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="E-mail" value="#{bean.email}"/><br/><br/>
 
-                        <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="User name" value="#{managedBeanSinifi.user_name}"/><br/><br/>
+                        <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="User name" value="#{bean.userName}"/><br/><br/>
 
-                        <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Password" value="#{managedBeanSinifi.password}"/><br/><br/>
+                        <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Password" value="#{bean.password}"/><br/><br/>
                 <!--        <small id="passwordHelpInline" class="text-muted">Contain letters and numbers</small><br/><br/>  -->
-                        <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Password Again" value="#{managedBeanSinifi.password}"/><br/><br/> 
+                        <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Password Again" value="#{bean.password}"/><br/><br/> 
 
-                        <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Country" value="#{managedBeanSinifi.country}"/><br/><br/>
+                        <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Country" value="#{bean.country}"/><br/><br/>
 
-                        <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="City" value="#{managedBeanSinifi.city}"/><br/><br/>
+                        <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="City" value="#{bean.city}"/><br/><br/>
 
-                        <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="District" value="#{managedBeanSinifi.district}"/><br/><br/>
+                        <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="District" value="#{bean.district}"/><br/><br/>
                         
                         <div id="menu">
                         <div>    
-                            <h:commandButton class="btn btn-secondary btn-lg" style="width:250px" value="Sign up" action="homepage.xhtml" /></div>
+                            <h:commandButton class="btn btn-secondary btn-lg" style="width:250px" value="Sign bcvbcup" action="#{bean.save()}" /></div>
+                           
                             <!-- Baglandıgı yer dogru mu bilmiyorum????!!! --> 
                         </div>
-                <!-- <button type="button" class="btn btn-secondary btn-lg" action="#{managedBeanSinifi.kaydet()} " >Sign up</button> --> 
+                <!-- <button type="button" class="btn btn-secondary btn-lg" action="#{bean.save()} " >Sign up</button> --> 
                         
                         
                  </center></h:form>
