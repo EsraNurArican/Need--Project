@@ -5,12 +5,16 @@
  */
 package data;
 
+
+
 import java.sql.Connection;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
+import static org.testng.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -18,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author esra
  */
 public class beanTest {
+    
     
     public beanTest() {
         System.out.println("Starting bean class test..");
@@ -50,7 +55,7 @@ public class beanTest {
         String result = instance.getName();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is failed.");
+        //fail("The test case is failed.");
     }
 
     /**
@@ -63,7 +68,7 @@ public class beanTest {
         bean instance = new bean();
         instance.setName(name);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is failed.");
+        //fail("The test case is failed.");
     }
 
     /**
@@ -77,7 +82,7 @@ public class beanTest {
         String result = instance.getSurname();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is failed.");
+        //fail("The test case is failed.");
     }
 
     /**
@@ -90,7 +95,7 @@ public class beanTest {
         bean instance = new bean();
         instance.setSurname(surname);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is failed.");
+        //fail("The test case is failed.");
     }
 
     /**
@@ -102,9 +107,11 @@ public class beanTest {
         bean instance = new bean();
         String expResult = "12.12.1912";
         String result = instance.getBirthday();
+        System.out.println(instance.getBirthday());
+        System.out.println(expResult);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is failed.");
+        //fail("The test case is failed.");
     }
 
     /**
@@ -117,7 +124,7 @@ public class beanTest {
         bean instance = new bean();
         instance.setBirthday(birthday);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is failed.");
+        //fail("The test case is failed.");
     }
 
     /**
@@ -127,11 +134,11 @@ public class beanTest {
     public void testGetEmail() {
         System.out.println("getEmail");
         bean instance = new bean();
-        String expResult = "trial@hotmail.com";
+        String expResult = "trial@gmail.com";
         String result = instance.getEmail();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is failed.");
+        //fail("The test case is failed.");
     }
 
     /**
@@ -144,7 +151,7 @@ public class beanTest {
         bean instance = new bean();
         instance.setEmail(email);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is failed.");
+        //fail("The test case is failed.");
     }
 
     /**
@@ -158,7 +165,7 @@ public class beanTest {
         String result = instance.getUserName();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is failed.");
+        //fail("The test case is failed.");
     }
 
     /**
@@ -171,7 +178,7 @@ public class beanTest {
         bean instance = new bean();
         instance.setUserName(userName);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is failed.");
+        //fail("The test case is failed.");
     }
 
     /**
@@ -185,7 +192,7 @@ public class beanTest {
         String result = instance.getPassword();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is failed.");
+        //fail("The test case is failed.");
     }
 
     /**
@@ -198,7 +205,7 @@ public class beanTest {
         bean instance = new bean();
         instance.setPassword(password);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is failed.");
+        //fail("The test case is failed.");
     }
 
     /**
@@ -208,11 +215,11 @@ public class beanTest {
     public void testGetCountry() {
         System.out.println("getCountry");
         bean instance = new bean();
-        String expResult = "UK";
+        String expResult = "Turkey";
         String result = instance.getCountry();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is failed.");
+        //fail("The test case is failed.");
     }
 
     /**
@@ -225,7 +232,7 @@ public class beanTest {
         bean instance = new bean();
         instance.setCountry(country);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is failed.");
+        //fail("The test case is failed.");
     }
 
     /**
@@ -239,7 +246,7 @@ public class beanTest {
         String result = instance.getCity();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is failed.");
+        //fail("The test case is failed.");
     }
 
     /**
@@ -252,7 +259,7 @@ public class beanTest {
         bean instance = new bean();
         instance.setCity(city);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is failed.");
+        //fail("The test case is failed.");
     }
 
     /**
@@ -266,7 +273,7 @@ public class beanTest {
         String result = instance.getDistrict();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is failed.");
+        //fail("The test case is failed.");
     }
 
     /**
@@ -279,7 +286,7 @@ public class beanTest {
         bean instance = new bean();
         instance.setDistrict(district);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is failed.");
+        //fail("The test case is failed.");
     }
 
     /**
@@ -293,7 +300,7 @@ public class beanTest {
         Connection result = instance.Connect();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is failed.");
+        //fail("The test case is failed.");
     }
 
     /**
@@ -307,7 +314,7 @@ public class beanTest {
         String result = instance.save();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -319,7 +326,7 @@ public class beanTest {
         String[] arg = null;
         bean.main(arg);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
     
 }
