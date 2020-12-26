@@ -47,19 +47,6 @@ public class bean {
     String user="ari";
     String pass="need";
     
-    public bean(){
-        
-        name = "firstname";
-        surname = "secondname";
-        birthday = "12.12.1912";
-        email = "trial@gmail.com";
-        userName = "sampleUserName";
-        password = "userpassw1";
-        country = "Turkey";
-        city = "Agrı";
-        district = "mutlu";
-    
-    }
 
     public String getName() {
         return name;
@@ -272,24 +259,21 @@ public class bean {
             Statement stmt = con.createStatement();
             ResultSet rs;
             System.out.println(getName());
-            rs = stmt.executeQuery("SELECT username FROM userınformation WHERE name='"+getName()+"' AND password='"+getPassword()+"'");
-            int idkisix = 0;
+            rs = stmt.executeQuery("SELECT username FROM USERINFORMATION WHERE username='"+getUserName()+"' AND password='"+getPassword()+"'");
+            String idkisix = null;
             while ( rs.next() ) {
 
-                idkisix = rs.getInt("username");
+                idkisix = rs.getString(userName);
 
             }
 
-            ps=con.prepareStatement("INSERT INTO needPostInformation(userName, titleOfNeed, numberofneed,definition,country,city,district,address) VALUES (?,?,?,?,?,?,?,?)");
+            ps=con.prepareStatement("INSERT INTO NEEDPOSTINFORMATION(TITLEOFNEED,NUMBEROFNEED,DEFINITION,ADDRESS,USERNAME) VALUES (?,?,?,?,?)");
 
             ps.setString(1, userName);
             ps.setString(2, titleOfNeed);
             ps.setInt(3, numberOfNeed);
             ps.setString(4, definition);
-            ps.setString(5, country);
-            ps.setString(6, city);
-            ps.setString(7, district);
-            ps.setString(8, address);
+            ps.setString(5, address);
 
 
             ps.executeUpdate();
