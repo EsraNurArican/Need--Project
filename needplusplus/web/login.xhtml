@@ -29,7 +29,7 @@
                 <div class="modal-body" >
                     <h:form><center>
                         <br/>
-                        <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="E-mail" value="#{bean.email}"/><br/><br/>
+                        <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="User Name" value="#{bean.userName}"/><br/><br/>
 
                         <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Password" value="#{bean.password}"/><br/>
                       
@@ -40,7 +40,10 @@
                             </div>
                             
                             <div>    
-                                <h:commandButton class="btn btn-secondary btn-lg" style="width:250px" value="Log in" action="homepage.xhtml" />
+                                <h:commandButton class="btn btn-secondary btn-lg" style="width:250px" value="Log in"  
+                                                 action="#{bean.passwordCheck()}" 
+                                                   />   <h:commandButton/>
+                                
                             </div>
                             <!-- Baglandıgı yer dogru mu bilmiyorum????!!! --> 
                             
