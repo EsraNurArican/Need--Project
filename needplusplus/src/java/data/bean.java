@@ -185,6 +185,43 @@ public class bean {
         return null;
     }
      
+    public boolean userControl(String kullaniciAdi ,String sifre) throws ClassNotFoundException, SQLException{
+         Connection conn=null;
+         if(conn==null)
+        {
+             Class.forName("org.apache.derby.jdbc.ClientDriver");
+            conn=DriverManager.getConnection("jdbc:derby://localhost:1527/Need","ari","need");
+        }
+        try {
+            System.out.println("is kosulu");
+            if(conn!=null){ 
+                Statement stmt=conn.createStatement();
+
+                System.out.println("kullanici  adi\t sifre\t isim\t telefon");
+
+                ResultSet rs=stmt.executeQuery("select password from userınformation where username='"+kullaniciAdi+"'");
+                rs.next();
+                return sifre.equals(rs.getString(1));
+            }
+        }
+        catch(SQLException e){
+        }
+        return false;      
+    }
+    
+    public String passwordCheck() throws ClassNotFoundException, SQLException{
+         
+        bean dbk=new bean();
+        if(dbk.userControl(userName, password)==true)
+        {
+            return "homepage?faces-redirect=true";
+        }
+        else
+        {
+            return  "wrongPassword?faces-redirect=true";
+        }        
+    }
+     
     public static void main(String arg[]) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
         bean dbka=new bean();
          dbka.Connect();
