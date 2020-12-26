@@ -5,9 +5,12 @@
  */
 package data;
 
+//import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
-import org.junit.jupiter.api.Test;
+import  org.testng.annotations.Test;
+//import org.junit.jupiter.api.Test;
 
 /**
  *
@@ -26,7 +29,7 @@ public class beanClassTest {
         String result = instance.getName();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is failed.");
+        //fail("The test case is failed.");
     }
 
     /**
@@ -39,7 +42,7 @@ public class beanClassTest {
         bean instance = new bean();
         instance.setName(name);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is failed.");
+        //fail("The test case is failed.");
     }
     
 }
