@@ -144,7 +144,6 @@ public class NeedPostOperations  extends bean{
 
             }
 
-
             ps=con.prepareStatement("INSERT INTO needPostInformation(userName, titleOfNeed, numberofneed,definition,country,city,district,address) VALUES (?,?,?,?,?,?,?,?)");
 
             ps.setString(1, userName);
