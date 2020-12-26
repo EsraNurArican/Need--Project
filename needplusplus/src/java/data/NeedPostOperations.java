@@ -64,6 +64,62 @@ public class NeedPostOperations  extends bean{
         this.district = district;
         this.address = address;
     }
+
+    public String getTitleOfNeed() {
+        return titleOfNeed;
+    }
+
+    public void setTitleOfNeed(String titleOfNeed) {
+        this.titleOfNeed = titleOfNeed;
+    }
+
+    public int getNumberOfNeed() {
+        return numberOfNeed;
+    }
+
+    public void setNumberOfNeed(int numberOfNeed) {
+        this.numberOfNeed = numberOfNeed;
+    }
+
+    public String getDefinition() {
+        return definition;
+    }
+
+    public void setDefinition(String definition) {
+        this.definition = definition;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
     
     
     public String AddNeed() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException
