@@ -254,10 +254,11 @@ public class bean {
         try{
 
             Class.forName("org.apache.derby.jdbc.ClientDriver");
-            con=DriverManager.getConnection("jdbc:derby://localhost:1527/userInformation","ari","need");
+            con=DriverManager.getConnection("jdbc:derby://localhost:1527/Need","ari","need");
 
             Statement stmt = con.createStatement();
             ResultSet rs;
+            System.out.println("add need metodundayım");
             System.out.println(getName());
             rs = stmt.executeQuery("SELECT username FROM USERINFORMATION WHERE username='"+getUserName()+"' AND password='"+getPassword()+"'");
             String idkisix = null;
@@ -269,11 +270,11 @@ public class bean {
 
             ps=con.prepareStatement("INSERT INTO NEEDPOSTINFORMATION(TITLEOFNEED,NUMBEROFNEED,DEFINITION,ADDRESS,USERNAME) VALUES (?,?,?,?,?)");
 
-            ps.setString(1, userName);
-            ps.setString(2, titleOfNeed);
-            ps.setInt(3, numberOfNeed);
-            ps.setString(4, definition);
-            ps.setString(5, address);
+            ps.setString(1, titleOfNeed);
+            ps.setInt(2, numberOfNeed);
+            ps.setString(3, definition);
+            ps.setString(4, address);
+            ps.setString(5, idkisix);
 
 
             ps.executeUpdate();
@@ -294,6 +295,7 @@ public class bean {
          dbka.setUserName("lol");
         dbka.setName("evrem");
         //dbka.setPassword("dur");
+        dbka.AddNeed();
        dbka.save();
       
         
