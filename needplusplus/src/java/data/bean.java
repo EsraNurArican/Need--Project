@@ -38,6 +38,10 @@ public class bean {
     String country;
     String city;
     String district;
+    String titleOfNeed;
+    int numberOfNeed;
+    String definition;
+    String address;
     private Connection conn;
     String dburl="jdbc:derby://localhost:1527/Need";
     String user="ari";
@@ -127,6 +131,38 @@ public class bean {
 
     public void setDistrict(String district) {
         this.district = district;
+    }
+    
+     public String getTitleOfNeed() {
+        return titleOfNeed;
+    }
+
+    public void setTitleOfNeed(String titleOfNeed) {
+        this.titleOfNeed = titleOfNeed;
+    }
+
+    public int getNumberOfNeed() {
+        return numberOfNeed;
+    }
+
+    public void setNumberOfNeed(int numberOfNeed) {
+        this.numberOfNeed = numberOfNeed;
+    }
+
+    public String getDefinition() {
+        return definition;
+    }
+
+    public void setDefinition(String definition) {
+        this.definition = definition;
+    }
+    
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
     
     public Connection Connect(){
@@ -221,6 +257,51 @@ public class bean {
             return  "wrongPassword?faces-redirect=true";
         }        
     }
+    
+    public String AddNeed() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException
+    {
+        
+        PreparedStatement ps=null;
+        Connection con=null;
+
+        try{
+
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+            con=DriverManager.getConnection("jdbc:derby://localhost:1527/userInformation","ari","need");
+
+            Statement stmt = con.createStatement();
+            ResultSet rs;
+            System.out.println(getName());
+            rs = stmt.executeQuery("SELECT username FROM userınformation WHERE name='"+getName()+"' AND password='"+getPassword()+"'");
+            int idkisix = 0;
+            while ( rs.next() ) {
+
+                idkisix = rs.getInt("username");
+
+            }
+
+            ps=con.prepareStatement("INSERT INTO needPostInformation(userName, titleOfNeed, numberofneed,definition,country,city,district,address) VALUES (?,?,?,?,?,?,?,?)");
+
+            ps.setString(1, userName);
+            ps.setString(2, titleOfNeed);
+            ps.setInt(3, numberOfNeed);
+            ps.setString(4, definition);
+            ps.setString(5, country);
+            ps.setString(6, city);
+            ps.setString(7, district);
+            ps.setString(8, address);
+
+
+            ps.executeUpdate();
+        }
+        catch(ClassNotFoundException | SQLException e)
+        {
+            System.out.println(e);
+        }
+
+        return null;
+    }
+    
      
     public static void main(String arg[]) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
         bean dbka=new bean();
