@@ -42,6 +42,20 @@ public class bean {
     String dburl="jdbc:derby://localhost:1527/Need";
     String user="ari";
     String pass="need";
+    
+    public bean(){
+        
+        name = "firstname";
+        surname = "secondname";
+        birthday = "12.12.1912";
+        email = "trial@gmail.com";
+        userName = "sampleUserName";
+        password = "userpassw1";
+        country = "Turkey";
+        city = "Agrı";
+        district = "mutlu";
+    
+    }
 
     public String getName() {
         return name;
@@ -114,8 +128,11 @@ public class bean {
     public void setDistrict(String district) {
         this.district = district;
     }
-  public Connection Connect(){
+    
+    public Connection Connect(){
+      System.out.println("connect testi");
         try{
+        
         Class.forName("org.apache.derby.jdbc.ClientDriver").newInstance();
         System.out.println("Connection is successful.");
         conn=DriverManager.getConnection(dburl,user,pass);
@@ -127,15 +144,16 @@ public class bean {
         return conn;
             
     }
-     public String save()
-    {
+    
+     public String save(){
+         
         System.out.println("ffs");
         PreparedStatement ps=null;
         Connection con=null;
         try{
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             con=DriverManager.getConnection("jdbc:derby://localhost:1527/Need","ari","need");
-            ps=con.prepareStatement("INSERT INTO userinformation(NAME, SURNAME, BIRTHDAY, EMAIL,USERNAME,PASSWORD,COUNTRY,CITY,DISTRICT) VALUES(?,?,?,?,?,?,?,?,?)");
+            ps=con.prepareStatement("INSERT INTO userinformation(NAME, SURNAME, BIRTHDATE, EMAIL,USERNAME,PASSWORD,COUNTRY,CITY,DISTRICT) VALUES(?,?,?,?,?,?,?,?,?)");
             
             ps.setString(1, name);
             ps.setString(2, surname);
@@ -166,13 +184,15 @@ public class bean {
         }
         return null;
     }
+     
     public static void main(String arg[]) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
         bean dbka=new bean();
          dbka.Connect();
          // A lil change for testing.. ok, Now push this commit, 
+         dbka.setUserName("lol");
         dbka.setName("evrem");
         //dbka.setPassword("dur");
-      //  dbka.save();
+       dbka.save();
       
         
         
@@ -181,8 +201,6 @@ public class bean {
         
         // System.out.println(dbka.sifreKontrol());
       
-      
-        
     }
     
 }
