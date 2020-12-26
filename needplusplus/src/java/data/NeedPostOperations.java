@@ -137,10 +137,10 @@ public class NeedPostOperations  extends bean{
             ResultSet rs;
             System.out.println(super.getName());
             rs = stmt.executeQuery("SELECT username FROM userınformation WHERE name='"+getName()+"' AND password='"+getPassword()+"'");
-            int idkisix = 0;
+            String idkisix = null;
             while ( rs.next() ) {
 
-                idkisix = rs.getInt("username");
+                idkisix = rs.getString(userName);
 
             }
 
