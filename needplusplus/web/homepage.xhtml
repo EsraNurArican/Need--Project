@@ -111,46 +111,34 @@
                 <table class="table table-bordered table-striped mb-0">
 
                   <tbody>
-                    <tr>
-                        <td style="color:white"><a href="faces/contactinformationofneedy.xhtml" > <b> Need1 </b> </a></td> 
-                    </tr>
-
-                    <tr>
-                      <td style="color:white"><a href="faces/contactinformationofneedy.xhtml" > <b> Need2 </b> </a></td> 
-                    </tr>
-
-                    <tr>
-                      <td style="color:white"><a href="faces/contactinformationofneedy.xhtml" > <b> Need3 </b> </a></td>  
-                    </tr>
-
-                    <tr>
-                      <td style="color:white"><a href="faces/contactinformationofneedy.xhtml" > <b> Need4 </b> </a></td> 
-                    </tr>
-
-                    <tr>
-                      <td style="color:white"><a href="faces/contactinformationofneedy.xhtml" > <b> Need5 </b> </a></td> 
-                    </tr>
-
-                    <tr>
-                      <td style="color:white"><a href="faces/contactinformationofneedy.xhtml" > <b> Need6 </b> </a></td> 
-                    </tr>
-
-                    <tr>
-                      <td style="color:white"><a href="faces/contactinformationofneedy.xhtml" > <b> Need7 </b> </a></td> 
-                    </tr>
-
-                    <tr>
-                      <td style="color:white"><a href="faces/contactinformationofneedy.xhtml" > <b> Need8 </b> </a></td> 
-                    </tr>
-
-                    <tr>
-                      <td style="color:white"><a href="faces/contactinformationofneedy.xhtml" > <b> Need9 </b> </a></td> 
-                    </tr>
-
-                    <tr>
-                     <td style="color:white"><a href="faces/contactinformationofneedy.xhtml" > <b> Need10 </b> </a></td> 
-                    </tr>
-
+                        <h:dataTable value="#{bean.getNeedTable()}" var="need">
+                            <h:column>
+                                    <f:facet name="header">
+                                        <h:outputLabel>Need Title</h:outputLabel>
+                                    </f:facet>
+                                    <td style="color:white"><a href="faces/contactinformationofneedy.xhtml" > 
+                                            <h:outputLabel value="#{need.needTitle}"/>  </a></td> 
+                            </h:column>
+                            <h:column>
+                                    <f:facet name="header">
+                                        <h:outputLabel>Number of need</h:outputLabel>
+                                    </f:facet>
+                                    <h:outputLabel value="#{need.needNumber}"/>
+                            </h:column>
+                            <h:column>
+                                    <f:facet name="header">
+                                        <h:outputLabel>Need Definition</h:outputLabel>
+                                    </f:facet>
+                                    <h:outputLabel value="#{need.needDefinition}"/>
+                            </h:column>
+                            <h:column>
+                                    <f:facet name="header">
+                                        <h:outputLabel>Need Address</h:outputLabel>
+                                    </f:facet>
+                                    <h:outputLabel value="#{need.needAddress}"/>
+                            </h:column>
+                        </h:dataTable>
+                    
                   </tbody>
                 </table>
                   
@@ -171,6 +159,8 @@
             </div>
           
         </div>
+        
+     
 
     </h:body>
 </html>
