@@ -222,7 +222,7 @@ public class bean {
 
                 System.out.println("kullanici  adi\t sifre\t isim\t telefon");
 
-                ResultSet rs=stmt.executeQuery("select password from userınformation where username='"+kullaniciAdi+"'");
+                ResultSet rs=stmt.executeQuery("select password from userınformation where name='"+kullaniciAdi+"'");
                 rs.next();
                 return sifre.equals(rs.getString(1));
             }
@@ -235,7 +235,7 @@ public class bean {
     public String passwordCheck() throws ClassNotFoundException, SQLException{
          
         bean dbk=new bean();
-        if(dbk.userControl(userName, password)==true)
+        if(dbk.userControl(name, password)==true)
         {
             return "homepage?faces-redirect=true";
         }
@@ -260,7 +260,7 @@ public class bean {
             ResultSet rs;
             System.out.println("add need metodundayım");
             System.out.println(getName());
-            rs = stmt.executeQuery("SELECT username FROM USERINFORMATION WHERE username='"+getUserName()+"' AND password='"+getPassword()+"'");
+            rs = stmt.executeQuery("SELECT username FROM USERINFORMATION WHERE name='"+getName()+"' AND password='"+getPassword()+"'");
             String idkisix = null;
             while ( rs.next() ) {
 
@@ -284,7 +284,7 @@ public class bean {
             System.out.println(e);
         }
 
-        return null;
+        return "homepage?faces-redirect=true";
     }
     
      
