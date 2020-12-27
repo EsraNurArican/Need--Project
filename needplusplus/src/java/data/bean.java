@@ -22,6 +22,8 @@ import javax.faces.bean.*;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -46,6 +48,7 @@ public class bean {
     String dburl="jdbc:derby://localhost:1527/Need";
     String user="ari";
     String pass="need";
+    public List<NeedPostInformations> needPostList;
     
 
     public String getName() {
@@ -122,6 +125,14 @@ public class bean {
     
      public String getTitleOfNeed() {
         return titleOfNeed;
+    }
+
+    public List<NeedPostInformations> getNeedPostList() {
+        return needPostList;
+    }
+
+    public void setNeedPostList(List<NeedPostInformations> needPostList) {
+        this.needPostList = needPostList;
     }
 
     public void setTitleOfNeed(String titleOfNeed) {
@@ -287,6 +298,53 @@ public class bean {
         return "homepage?faces-redirect=true";
     }
     
+    
+    /**
+     * This method returns a list structure which is type of NeedPostInformations object
+     * Takes values from database table for need posts, and assigns them into a list
+     * @return NeedPostInformation list
+     */
+    public List<NeedPostInformations> getNeedTable() {
+        PreparedStatement ps=null;
+        
+        try {
+            
+            Class.forName("org.apache.derby.jdbc.ClientDriver");//Hangi türde bir veri tabanını kullanacağını bildiriyoruz.
+            conn=DriverManager.getConnection("jdbc:derby://localhost:1527/Need","ari","need");//Bağlanacağı veri tabanını ve kullanacağı kullanıcı adı-parolayı bildiriyoruz.
+            ps = conn.prepareStatement("SELECT * FROM NEEDPOSTINFORMATION");//need tablosundaki herşeyi çek diyoruz.
+            ResultSet rs = ps.executeQuery();//SQL Sorgusundan dönecek sonuç rs sonuç kümesi içinde tutulacak.
+            List<NeedPostInformations> liste=new ArrayList<>();//AdiAlani sınıfı tipinde liste tanımladık çünkü SQL Sorgusundan dönecek sonuç içindeki Adi Alani kısmına bu tiple ulaşacaz.
+            while(rs.next())//Kayıt olduğu sürece her işlem sonunda 1 satır atla.
+            {
+                NeedPostInformations aa=new NeedPostInformations();//SQL Sorgusundan sütunları çekip bu değişkenin içinde Adı veya Alani kısmına atıyacağız.
+                aa.setNeedTitle(rs.getString("titleofneed")); //ResultSet içinden o anki indisdeki "Adi" anahtar kelimesine karşı gelen değer alınıyor.
+                aa.setNeedNumber(rs.getInt("numberofneed"));
+                aa.setNeedDefinition(rs.getString("definition")); //ResultSet içinden o anki indisdeki "Alani" anahtar kelimesine karşı gelen değer alınıyor.
+                aa.setNeedAddress(rs.getString("address"));
+                
+                liste.add(aa);// Add every value from table to the liste.
+            }
+            setNeedPostList(liste);
+            return liste;//Return liste.
+        } 
+        catch (ClassNotFoundException | SQLException exception) {
+            System.out.println("Bir hata meydana geldi:"+exception);
+            return null;
+        }
+        finally{ //try'a da düşse catch'e de bu bloktaki kod çalıştırılacak.
+            try {
+                if(conn!=null){ //Connection nesnesi belki yukarıda null kalmış olabilir. Kontrol etmekte fayda var.
+                    conn.close();
+                }
+                if(ps!=null){ //PreparedStatement nesnesi yukarıda null kalmış olabilir. Kontrol etmekte fayda var.
+                    ps.close();
+                }
+            } catch (SQLException sqlException) {
+                System.out.println("Bir hata meydana geldi:"+sqlException);
+            }
+        }
+    }
+    
      
     public static void main(String arg[]) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
         bean dbka=new bean();
@@ -297,6 +355,10 @@ public class bean {
         //dbka.setPassword("dur");
         dbka.AddNeed();
        dbka.save();
+       //int i=dbka.getNeedTable().size();
+       //System.out.println(dbka.getNeedPostList().get(1).getNeedTitle());
+       //System.out.println(i);
+       
       
         
         
