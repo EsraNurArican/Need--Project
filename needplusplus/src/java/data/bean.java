@@ -350,11 +350,11 @@ public class bean {
         bean dbka=new bean();
          dbka.Connect();
          // A lil change for testing.. ok, Now push this commit, 
-         dbka.setUserName("lol");
-        dbka.setName("evrem");
+        // dbka.setUserName("lol");
+        //dbka.setName("evrem");
         //dbka.setPassword("dur");
-        dbka.AddNeed();
-       dbka.save();
+        //dbka.AddNeed();
+       //dbka.save();
        //int i=dbka.getNeedTable().size();
        //System.out.println(dbka.getNeedPostList().get(1).getNeedTitle());
        //System.out.println(i);
