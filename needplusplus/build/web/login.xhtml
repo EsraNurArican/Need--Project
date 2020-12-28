@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+        <title>Log in to Need++</title>
+        
+        <style>
+            #align1 {
+             background-color: #1d2124;
+             
+            }
+            #align2 {
+            transform: translateY(30%);
+            }
+            
+        </style>
+    </h:head>
+    <h:body style="background-color:orange;">
+        
+        <div class="modal-dialog" id="align2" tabindex="-1" role="dialog" >
+            <div class="modal-dialog"  role="document">
+            <div class="modal-content" id="align1" >
+                <div class="modal-header" style="border-bottom: 5px solid black;" >
+                    <h5 class="col-12 modal-title text-center" style="color:orange;">Log in to Need++</h5>
+                </div>
+                <div class="modal-body" >
+                    <h:form><center>
+                        <br/>
+                        <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="User Name" value="#{bean.userName}"/><br/><br/>
+
+                        <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Password" value="#{bean.password}"/><br/>
+                      
+
+                        <div id="menu">
+                            <div>    
+                                <h:commandButton class="btn" style="color:#4d94ff; font-size:80%" value="Forgot password?" action="forgotpassword.xhtml" />
+                            </div>
+                            
+                            <div>    
+                                <h:commandButton class="btn btn-secondary btn-lg" style="width:250px" value="Log in"  
+                                                 action="#{bean.passwordCheck()}" 
+                                                   />   <h:commandButton/>
+                                
+                            </div>
+                            <!-- Baglandıgı yer dogru mu bilmiyorum????!!! --> 
+                            
+                            <div>  
+                              <br/> 
+                              <p style="font-size:90%; color:white;">Don't have an account?
+                              <h:commandButton class="btn btn-primary btn-sm" value="Sign up"   action="signup.xhtml" /></p>
+                            </div>   
+                        </div>
+                        
+                 </center></h:form>
+                </div>
+                <div class="modal-dialog" style="max-width: 80%;" role="document"/>
+            </div>
+        </div>
+    </div>
+        
+    </h:body>
+</html>

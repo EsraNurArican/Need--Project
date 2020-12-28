@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Need++</title>
+        <style>
+            a{color :white !important
+            }
+            
+            a:hover {
+              text-decoration: none !important; 
+            }
+            
+            tr:nth-child(even) {background-color: #4b4e4b;}
+            td{text-align: center}
+            .table-bordered td{
+            border: 2px solid #212529 !important;
+            }
+            .my-custom-scrollbar {
+            position: relative;
+            height: 380px;
+            width:70%;
+            overflow: auto;
+            background: #aeb9a8;
+            }
+            .table-wrapper-scroll-y {
+              display: block;
+            }
+            #left_up_buttons{
+              padding-left: 8%;
+              padding-top:200px;
+            }
+            #left_down_buttons{
+              padding-left: 8%;
+              padding-top: 100px;
+            }
+            #id1 {
+            transform: translateX(30%);
+            }
+            .scrollbar-young-passion::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+            background-color: #c2c5c0;
+            border-radius: 10px; }
+
+            .scrollbar-young-passion::-webkit-scrollbar {
+            width: 12px;
+            background-color: orange; }
+
+            .scrollbar-young-passion::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+            background-image: -webkit-gradient(linear, left top, right top, from(#212529), color-stop(0%, #212529),
+            color-stop(21%, #212529), color-stop(52%, #212529), color-stop(78%, #c2c5c0), to(#c2c5c0));
+            background-image: -webkit-linear-gradient(left,#c2c5c0 0%, #aeb9a8 0%, #212529 21%, #aeb9a8 52%, #aeb9a8 78%,
+            #212529 100%);
+            background-image: linear-gradient(to right, #212529 0%, #212529 0%, #212529 21%, #aeb9a8 52%, #aeb9a8 78%,
+            #212529 100%); }
+        
+        </style>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+    </h:head>
+    <h:body style="background-color:orange;">
+           
+        <div class="row">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+              <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="#page-top" style="margin-top:-15px; margin-left:-40px" > <img src="arii.png" width="75" height="75" alt="arii"/>
+                </a>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                  <ul class="navbar-nav ml-auto">
+
+                    <li class="nav-item">
+                      <h:button class="btn btn-warning" value="Profile" outcome="profile.xhtml"/>
+                    </li>
+
+                    <li class="nav-item" id="id1">
+                      <h:button class="btn btn-warning" value="Sign Out" outcome="index.xhtml"/>
+                    </li>
+
+                  </ul>
+                </div>
+              </div>
+            </nav>
+        </div>
+        
+        <div class="row">
+            
+            <div class="col-md-4" id="left_up_buttons">
+
+                <div class="modal-body">
+                    <div class="card" style="margin-right:3px; margin-top:10px; width: 50%; height: 120px; background-color: #aeb9a8; color:black; text-align: center; border-color: black; border: 2px solid #212529 !important;">
+                    <div class="card-body">
+                        <p class="card-text" style=" font-weight: bold; color:white" >18965<br> </br>
+                       Active Needs</p>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="modal-body">
+                    <h:button  class="btn btn-dark"  style=" font-weight: bold; background-color: #aeb9a8; margin-right:3px; margin-top:10px; width: 50%; height: 70px; color:white; border-color: black; border: 2px solid #212529 !important;" outcome="addneed.xhtml" value="Add Need"/> 
+                </div>   
+                
+            </div>  
+
+            <div class="col-md-8" style="margin-top:10%;">
+                
+              <div class="table-wrapper-scroll-y my-custom-scrollbar scrollbar-young-passion ">
+
+                <table class="table table-bordered table-striped mb-0">
+
+                  <tbody>
+                    <tr>
+                        <td style="color:white"><a href="faces/contactinformationofneedy.xhtml" > <b> Need1 </b> </a></td> 
+                    </tr>
+
+                    <tr>
+                      <td style="color:white"><a href="faces/contactinformationofneedy.xhtml" > <b> Need2 </b> </a></td> 
+                    </tr>
+
+                    <tr>
+                      <td style="color:white"><a href="faces/contactinformationofneedy.xhtml" > <b> Need3 </b> </a></td>  
+                    </tr>
+
+                    <tr>
+                      <td style="color:white"><a href="faces/contactinformationofneedy.xhtml" > <b> Need4 </b> </a></td> 
+                    </tr>
+
+                    <tr>
+                      <td style="color:white"><a href="faces/contactinformationofneedy.xhtml" > <b> Need5 </b> </a></td> 
+                    </tr>
+
+                    <tr>
+                      <td style="color:white"><a href="faces/contactinformationofneedy.xhtml" > <b> Need6 </b> </a></td> 
+                    </tr>
+
+                    <tr>
+                      <td style="color:white"><a href="faces/contactinformationofneedy.xhtml" > <b> Need7 </b> </a></td> 
+                    </tr>
+
+                    <tr>
+                      <td style="color:white"><a href="faces/contactinformationofneedy.xhtml" > <b> Need8 </b> </a></td> 
+                    </tr>
+
+                    <tr>
+                      <td style="color:white"><a href="faces/contactinformationofneedy.xhtml" > <b> Need9 </b> </a></td> 
+                    </tr>
+
+                    <tr>
+                     <td style="color:white"><a href="faces/contactinformationofneedy.xhtml" > <b> Need10 </b> </a></td> 
+                    </tr>
+
+                  </tbody>
+                </table>
+                  
+              </div>
+
+            </div>
+
+        </div>
+
+        <div class="row" id="left_down_buttons" >
+          
+            <div class="modal-body">
+              <h:button class="btn btn-dark" style=" color:orange; margin-right:3px; " value="Who We Are?" outcome="aboutus.xhtml"/> 
+
+              <h:button class="btn btn-dark" style=" color:orange; margin-right:3px; " value="Help" outcome="help.xhtml"/> 
+
+              <h:button class="btn btn-dark" style=" color:orange; margin-right:3px; " value="Contact" outcome="contactus.xhtml"/>
+            </div>
+          
+        </div>
+
+    </h:body>
+</html>
+
