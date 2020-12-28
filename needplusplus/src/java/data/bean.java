@@ -49,6 +49,15 @@ public class bean {
     String user="ari";
     String pass="need";
     public List<NeedPostInformations> needPostList;
+    int sizeOfActiveNeeds;
+
+    public int getSizeOfActiveNeeds() {
+        return sizeOfActiveNeeds;
+    }
+
+    public void setSizeOfActiveNeeds(int sizeOfActiveNeeds) {
+        this.sizeOfActiveNeeds = sizeOfActiveNeeds;
+    }
     
 
     public String getName() {
@@ -323,8 +332,12 @@ public class bean {
                 aa.setNeedAddress(rs.getString("address"));
                 
                 liste.add(aa);// Add every value from table to the liste.
+                
             }
             setNeedPostList(liste);
+            this.sizeOfActiveNeeds=liste.size();
+            System.out.println("fonsksiyon icindeki"+sizeOfActiveNeeds);
+            setSizeOfActiveNeeds(liste.size());
             return liste;//Return liste.
         } 
         catch (ClassNotFoundException | SQLException exception) {
@@ -345,10 +358,20 @@ public class bean {
         }
     }
     
+    public int getActiveNeedsSize(){
+        
+        System.out.println("htmlde cagırdıgım fonskitonun sonucu:");
+        System.out.println(this.sizeOfActiveNeeds);
+        return this.sizeOfActiveNeeds;
+    
+    }
+    
      
     public static void main(String arg[]) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
         bean dbka=new bean();
          dbka.Connect();
+         dbka.getNeedTable();
+         dbka.getActiveNeedsSize();
          // A lil change for testing.. ok, Now push this commit, 
         // dbka.setUserName("lol");
         //dbka.setName("evrem");
