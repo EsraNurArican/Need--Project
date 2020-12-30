@@ -30,6 +30,9 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @RequestScoped
 
+/**
+ * Class to keep the user information
+ */
 public class bean {
     String name;
     String surname;
@@ -51,6 +54,45 @@ public class bean {
     public List<NeedPostInformations> needPostList;
     int sizeOfActiveNeeds;
 
+    /**
+     * No parameter constructor 
+     * @return 
+     */
+    public bean()
+    {}
+    
+    /**
+     * Constructor for testing
+     * Initializing the below elements
+     * @param name
+     * @param surname
+     * @param birthday
+     * @param email
+     * @param userName
+     * @param password
+     * @param country
+     * @param city
+     * @param district
+     * @param address 
+     */
+    public bean(String name,String surname, String birthday,String email,String userName,String password,String country,
+            String city,String district,String address)
+    {
+        this.address=address;
+        this.birthday= birthday;
+        this.city=city;
+        this.country=country;
+        this.district=district;
+        this.email=email;
+        this.name=name;
+        this.password=password;
+        this.surname= surname;
+        this.userName=userName;
+        
+    }
+    
+    /* Getter and Setter Methods */
+    
     public int getSizeOfActiveNeeds() {
         return sizeOfActiveNeeds;
     }
@@ -173,7 +215,7 @@ public class bean {
     }
     
     public Connection Connect(){
-      System.out.println("connect testi");
+      System.out.println("Connection test...");
         try{
         
         Class.forName("org.apache.derby.jdbc.ClientDriver").newInstance();
@@ -188,9 +230,8 @@ public class bean {
             
     }
     
-     public String save(){
+    public String save(){
          
-        System.out.println("ffs");
         PreparedStatement ps=null;
         Connection con=null;
         try{
@@ -225,7 +266,7 @@ public class bean {
                 System.out.println(e);
             }
         }
-        return null;
+        return "Bean save successful.";
     }
      
     public boolean userControl(String kullaniciAdi ,String sifre) throws ClassNotFoundException, SQLException{
@@ -341,7 +382,7 @@ public class bean {
             return liste;//Return liste.
         } 
         catch (ClassNotFoundException | SQLException exception) {
-            System.out.println("Bir hata meydana geldi:"+exception);
+            System.out.println("An error occured! :"+exception);
             return null;
         }
         finally{ //try'a da düşse catch'e de bu bloktaki kod çalıştırılacak.
@@ -353,12 +394,13 @@ public class bean {
                     ps.close();
                 }
             } catch (SQLException sqlException) {
-                System.out.println("Bir hata meydana geldi:"+sqlException);
+                System.out.println("An error occured! :"+sqlException);
             }
         }
     }
     
-    public int getActiveNeedsSize(){
+    public int getActiveNeedsSize()
+    {
         
         System.out.println("htmlde cagırdıgım fonskitonun sonucu:");
         System.out.println(this.sizeOfActiveNeeds);
@@ -368,28 +410,27 @@ public class bean {
     
      
     public static void main(String arg[]) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
-        bean dbka=new bean();
-         dbka.Connect();
-         dbka.getNeedTable();
-         dbka.getActiveNeedsSize();
-         // A lil change for testing.. ok, Now push this commit, 
+        bean dbka=new bean("elif", "keles", "01.01.1901", "elif@hotmail.com", "elif1", "pass123", "tr", "kocaeli", "gebze", "");
+        dbka.Connect();
+        dbka.getNeedTable();
+        dbka.getActiveNeedsSize();
+        // A lil change for testing.. ok, Now push this commit, 
         // dbka.setUserName("lol");
         //dbka.setName("evrem");
         //dbka.setPassword("dur");
         //dbka.AddNeed();
-       //dbka.save();
-       //int i=dbka.getNeedTable().size();
-       //System.out.println(dbka.getNeedPostList().get(1).getNeedTitle());
-       //System.out.println(i);
-       
-      
+        //dbka.save();
+        //int i=dbka.getNeedTable().size();
+        //System.out.println(dbka.getNeedPostList().get(1).getNeedTitle());
+        //System.out.println(i);
+            
         
         
-      // dbka.kullaniciListesi();
-      //  dbka.sifreKontrol();
+        //dbka.kullaniciListesi();
+        //dbka.sifreKontrol();      
         
         // System.out.println(dbka.sifreKontrol());
       
     }
-    
+        
 }
