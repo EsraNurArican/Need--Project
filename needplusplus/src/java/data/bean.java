@@ -289,7 +289,7 @@ public class bean {
          Connection conn=null;
          if(conn==null)
         {
-             Class.forName("org.apache.derby.jdbc.ClientDriver");
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
             conn=DriverManager.getConnection("jdbc:derby://localhost:1527/Need","ari","need");
         }
         try {
@@ -299,14 +299,14 @@ public class bean {
 
                 System.out.println("Username\t Password\t Name\t Telephone");
 
-                ResultSet rs=stmt.executeQuery("select password from userınformation where name='"+kullaniciAdi+"'");
-                rs.next();
-                return sifre.equals(rs.getString(1));
+                ResultSet rs=stmt.executeQuery("select password from userinformation where name='"+kullaniciAdi+"'");
+                rs.next(); 
+                return sifre.equals(rs.getString("password"));
             }
         }
-        catch(SQLException e){
-        }
-        return false;      
+        catch(SQLException e)
+        {}
+        return false;  
     }
     
     /**
@@ -318,10 +318,8 @@ public class bean {
      * @throws SQLException 
      */
     public String passwordCheck() throws ClassNotFoundException, SQLException{
-         
-        bean dbk=new bean("elif", "keles", "01.01.1901", "elif@hotmail.com", "elif1", "pass123", "tr", "kocaeli", "gebze", "simpleAddress", "Needtitle", 5, "SimpleDefinition", 0);int expResult = 0;
         
-        if(dbk.userControl(name, password)==true)
+        if(this.userControl(name, password) ==true)
         {
             return "homepage?faces-redirect=true";
         }
