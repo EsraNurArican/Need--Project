@@ -58,7 +58,7 @@ public class bean {
      * No parameter constructor 
      * @return 
      */
-    public bean(String elif, String keles, String string, String elifhotmailcom, String elif1, String pass123, String tr, String kocaeli, String gebze, String string1)
+    public bean()
     {}
     
     /**
@@ -319,7 +319,8 @@ public class bean {
      */
     public String passwordCheck() throws ClassNotFoundException, SQLException{
          
-        bean dbk=new bean("elif", "keles", "01.01.1901", "elif@hotmail.com", "elif1", "pass123", "tr", "kocaeli", "gebze", "");
+        bean dbk=new bean("elif", "keles", "01.01.1901", "elif@hotmail.com", "elif1", "pass123", "tr", "kocaeli", "gebze", "simpleAddress", "Needtitle", 5, "SimpleDefinition", 0);int expResult = 0;
+        
         if(dbk.userControl(name, password)==true)
         {
             return "homepage?faces-redirect=true";
