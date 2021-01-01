@@ -58,7 +58,7 @@ public class bean {
      * No parameter constructor 
      * @return 
      */
-    public bean()
+    public bean(String elif, String keles, String string, String elifhotmailcom, String elif1, String pass123, String tr, String kocaeli, String gebze, String string1)
     {}
     
     /**
@@ -74,9 +74,14 @@ public class bean {
      * @param city
      * @param district
      * @param address 
+     * @param titleOfNeed 
+     * @param numberOfNeed 
+     * @param definition 
+     * @param sizeOfActiveNeed 
      */
     public bean(String name,String surname, String birthday,String email,String userName,String password,String country,
-            String city,String district,String address)
+            String city,String district,String address, String titleOfNeed, int numberOfNeed, String definition,
+            int sizeOfActiveNeed)
     {
         this.address=address;
         this.birthday= birthday;
@@ -88,20 +93,15 @@ public class bean {
         this.password=password;
         this.surname= surname;
         this.userName=userName;
+        this.titleOfNeed= titleOfNeed;
+        this.numberOfNeed=numberOfNeed;
+        this.definition=definition;
+        this.sizeOfActiveNeeds=sizeOfActiveNeed;
         
     }
     
     /* Getter and Setter Methods */
     
-    public int getSizeOfActiveNeeds() {
-        return sizeOfActiveNeeds;
-    }
-
-    public void setSizeOfActiveNeeds(int sizeOfActiveNeeds) {
-        this.sizeOfActiveNeeds = sizeOfActiveNeeds;
-    }
-    
-
     public String getName() {
         return name;
     }
@@ -174,20 +174,28 @@ public class bean {
         this.district = district;
     }
     
+    public int getSizeOfActiveNeeds() {
+        return sizeOfActiveNeeds;
+    }
+
+    public void setSizeOfActiveNeeds(int sizeOfActiveNeeds) {
+        this.sizeOfActiveNeeds = sizeOfActiveNeeds;
+    }
+    
      public String getTitleOfNeed() {
         return titleOfNeed;
     }
-
+    
+    public void setTitleOfNeed(String titleOfNeed) {
+        this.titleOfNeed = titleOfNeed;
+    }
+     
     public List<NeedPostInformations> getNeedPostList() {
         return needPostList;
     }
 
     public void setNeedPostList(List<NeedPostInformations> needPostList) {
         this.needPostList = needPostList;
-    }
-
-    public void setTitleOfNeed(String titleOfNeed) {
-        this.titleOfNeed = titleOfNeed;
     }
 
     public int getNumberOfNeed() {
@@ -269,6 +277,14 @@ public class bean {
         return "Bean save successful.";
     }
      
+    /**
+     * Method to check the username and password pair
+     * @param kullaniciAdi
+     * @param sifre
+     * @return
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     public boolean userControl(String kullaniciAdi ,String sifre) throws ClassNotFoundException, SQLException{
          Connection conn=null;
          if(conn==null)
@@ -277,11 +293,11 @@ public class bean {
             conn=DriverManager.getConnection("jdbc:derby://localhost:1527/Need","ari","need");
         }
         try {
-            System.out.println("is kosulu");
+            System.out.println("Conditions...");
             if(conn!=null){ 
                 Statement stmt=conn.createStatement();
 
-                System.out.println("kullanici  adi\t sifre\t isim\t telefon");
+                System.out.println("Username\t Password\t Name\t Telephone");
 
                 ResultSet rs=stmt.executeQuery("select password from userınformation where name='"+kullaniciAdi+"'");
                 rs.next();
@@ -293,9 +309,17 @@ public class bean {
         return false;      
     }
     
+    /**
+     * Method to check if the password is correct or not
+     * If correct, directs user to homepage
+     * if not, asks again 
+     * @return
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     public String passwordCheck() throws ClassNotFoundException, SQLException{
          
-        bean dbk=new bean();
+        bean dbk=new bean("elif", "keles", "01.01.1901", "elif@hotmail.com", "elif1", "pass123", "tr", "kocaeli", "gebze", "");
         if(dbk.userControl(name, password)==true)
         {
             return "homepage?faces-redirect=true";
@@ -306,6 +330,14 @@ public class bean {
         }        
     }
     
+    /**
+     * Method to add Need 
+     * @return homepage if the adding action is successful
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws InstantiationException
+     * @throws IllegalAccessException 
+     */
     public String AddNeed() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException
     {
         
@@ -398,22 +430,14 @@ public class bean {
             }
         }
     }
-    
-    public int getActiveNeedsSize()
-    {
-        
-        System.out.println("htmlde cagırdıgım fonskitonun sonucu:");
-        System.out.println(this.sizeOfActiveNeeds);
-        return this.sizeOfActiveNeeds;
-    
-    }
-    
+       
      
     public static void main(String arg[]) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
-        bean dbka=new bean("elif", "keles", "01.01.1901", "elif@hotmail.com", "elif1", "pass123", "tr", "kocaeli", "gebze", "");
+        bean dbka=new bean("elif", "keles", "01.01.1901", "elif@hotmail.com", "elif1", "pass123", "tr", "kocaeli", "gebze", "simpleAddress", "Needtitle", 5, "SimpleDefinition", 0);
         dbka.Connect();
         dbka.getNeedTable();
-        dbka.getActiveNeedsSize();
+        System.out.print("Active need number: ");
+        System.out.print(dbka.getSizeOfActiveNeeds() + "\n" ); 
         // A lil change for testing.. ok, Now push this commit, 
         // dbka.setUserName("lol");
         //dbka.setName("evrem");
