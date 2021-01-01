@@ -26,7 +26,7 @@ public class beanClassTest {
     @Test
      public void testGetName() {
         System.out.println("getName");
-        bean instance = new bean("elif", "keles", "01.01.1901", "elif@hotmail.com", "elif1", "pass123", "tr", "kocaeli", "gebze", "");
+        bean instance=new bean("elif", "keles", "01.01.1901", "elif@hotmail.com", "elif1", "pass123", "tr", "kocaeli", "gebze", "simpleAddress", "Needtitle", 5, "SimpleDefinition", 0);
         String expResult = "elif";
         String result = instance.getName();
         assertEquals(expResult, result);
@@ -41,7 +41,7 @@ public class beanClassTest {
     public void testSetName() {
         System.out.println("setName");
         String name = "EsraNur";
-        bean instance = new bean("elif", "keles", "01.01.1901", "elif@hotmail.com", "elif1", "pass123", "tr", "kocaeli", "gebze", "");
+        bean instance=new bean("elif", "keles", "01.01.1901", "elif@hotmail.com", "elif1", "pass123", "tr", "kocaeli", "gebze", "simpleAddress", "Needtitle", 5, "SimpleDefinition", 0);int expResult = 0;
         instance.setName(name);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is failed.");
