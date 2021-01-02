@@ -28,13 +28,14 @@
                     <div class="modal-body" >
                         <h:form>
                             <center>
-                                <br/><h:inputText p:style="background-color:#f8d15c; width:400px" p:placeholder="Title of Need" value="#{NeedPostOperations.titleOfNeed}"/><br/>                      
-                                <br/><h:inputText p:style="background-color:#f8d15c; width:400px" p:placeholder="Location" value="#{NeedPostOperations.address}"/><br/>                      
-                                <br/><h:inputText p:style="background-color:#f8d15c; width:400px;  height:100px" p:placeholder="Well and clearly defined need" value="#{NeedPostOperations.definition}"/><br/>                      
+                                <br/><h:inputText p:style="background-color:#f8d15c; width:400px" p:placeholder="Title of Need" value="#{bean.titleOfNeed}"/><br/>                      
+                                <br/><h:inputText p:style="background-color:#f8d15c; width:400px" p:placeholder="Location" value="#{bean.address}"/><br/>                      
+                                <br/><h:inputText p:style="background-color:#f8d15c; width:400px;  height:100px" p:placeholder="Well and clearly defined need" value="#{bean.definition}"/><br/>   
+                                <br/><h:inputText p:style="background-color:#f8d15c; width:400px;  height:100px" p:placeholder="Number of need" value="#{bean.numberOfNeed}"/><br/>
                                 <br/>
                                 <div id="menu">
                                     <div>    
-                                        <h:commandButton class="btn btn-secondary btn-lg" style="width:400px" value="Add need" action="#{NeedPostOperations.addNeed()}" />
+                                        <h:commandButton class="btn btn-secondary btn-lg" style="width:400px" value="Add need" action="#{bean.AddNeed()}" />
                                     </div>
                                     <!-- Baglandıgı yer dogru mu bilmiyorum????!!! --> 
 

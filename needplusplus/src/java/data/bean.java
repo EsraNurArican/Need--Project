@@ -274,7 +274,7 @@ public class bean {
                 System.out.println(e);
             }
         }
-        return "Bean save successful.";
+        return "homepage?faces-redirect=true";
     }
      
     /**
@@ -356,7 +356,7 @@ public class bean {
             String idkisix = null;
             while ( rs.next() ) {
 
-                idkisix = rs.getString(userName);
+                idkisix = rs.getString(5);
 
             }
 
