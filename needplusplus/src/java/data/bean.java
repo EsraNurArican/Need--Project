@@ -28,7 +28,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 @ManagedBean
-@RequestScoped
+@ApplicationScoped
 
 /**
  * Class to keep the user information
@@ -299,7 +299,7 @@ public class bean {
 
                 System.out.println("Username\t Password\t Name\t Telephone");
 
-                ResultSet rs=stmt.executeQuery("select password from userinformation where name='"+kullaniciAdi+"'");
+                ResultSet rs=stmt.executeQuery("select password from userinformation where username='"+kullaniciAdi+"'");
                 rs.next(); 
                 return sifre.equals(rs.getString("password"));
             }
@@ -319,7 +319,7 @@ public class bean {
      */
     public String passwordCheck() throws ClassNotFoundException, SQLException{
         
-        if(this.userControl(name, password) ==true)
+        if(this.userControl(userName, password) ==true)
         {
             return "homepage?faces-redirect=true";
         }
@@ -352,11 +352,16 @@ public class bean {
             ResultSet rs;
             System.out.println("add need metodundayım");
             System.out.println(getName());
-            rs = stmt.executeQuery("SELECT username FROM USERINFORMATION WHERE name='"+getName()+"' AND password='"+getPassword()+"'");
+            rs = stmt.executeQuery("SELECT username FROM USERINFORMATION WHERE username='"+getUserName()+"' AND password='"+getPassword()+"'");
+            int type = rs.getType();
+            System.out.print(type);
+              
+    
             String idkisix = null;
             while ( rs.next() ) {
-
-                idkisix = rs.getString(5);
+System.out.print("dplsdcğspl");
+                idkisix = rs.getString("username");
+                 System.out.print(idkisix);
 
             }
 
@@ -366,6 +371,7 @@ public class bean {
             ps.setInt(2, numberOfNeed);
             ps.setString(3, definition);
             ps.setString(4, address);
+            System.out.print(idkisix);
             ps.setString(5, idkisix);
 
 
@@ -441,7 +447,7 @@ public class bean {
         // dbka.setUserName("lol");
         //dbka.setName("evrem");
         //dbka.setPassword("dur");
-        //dbka.AddNeed();
+        dbka.AddNeed();
         //dbka.save();
         //int i=dbka.getNeedTable().size();
         //System.out.println(dbka.getNeedPostList().get(1).getNeedTitle());
