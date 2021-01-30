@@ -22,7 +22,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.openqa.grid.common.SeleniumProtocol.WebDriver;
+//import static org.openqa.grid.common.SeleniumProtocol.WebDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -465,7 +465,7 @@ public class beanTest
     public void testSave() {
         System.out.println("save");
         bean instance=new bean("elif", "keles", "01.01.1901", "elif@hotmail.com", "elif1", "pass123", "tr", "kocaeli", "gebze", "simpleAddress", "Needtitle", 5, "SimpleDefinition", 0);
-        String expResult = "Bean save successful.";
+        String expResult = "homepage?faces-redirect=true";
         String result = instance.save();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
@@ -495,7 +495,7 @@ public class beanTest
         System.out.println("passwordCheck");
         bean instance=new bean("elif", "keles", "01.01.1901", "elif@hotmail.com", "elif1", "pass123", "tr", "kocaeli", "gebze", "simpleAddress", "Needtitle", 5, "SimpleDefinition", 0);
         /* default is wrong page  */
-        String expResult = "wrongPassword?faces-redirect=true";
+        String expResult = "homepage?faces-redirect=true";
         String result = instance.passwordCheck();
         assertEquals(expResult, result);
         
