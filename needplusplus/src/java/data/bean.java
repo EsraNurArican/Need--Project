@@ -435,33 +435,7 @@ public class bean {
             }
         }
     }
-       
-     
-    public static void main(String arg[]) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
-        bean dbka=new bean("elif", "keles", "01.01.1901", "elif@hotmail.com", "elif1", "pass123", "tr", "kocaeli", "gebze", "simpleAddress", "Needtitle", 5, "SimpleDefinition", 0);
-        dbka.Connect();
-        dbka.getNeedTable();
-        System.out.print("Active need number: ");
-        System.out.print(dbka.getSizeOfActiveNeeds() + "\n" ); 
-        // A lil change for testing.. ok, Now push this commit, 
-        // dbka.setUserName("lol");
-        //dbka.setName("evrem");
-        //dbka.setPassword("dur");
-        dbka.AddNeed();
-        //dbka.save();
-        //int i=dbka.getNeedTable().size();
-        //System.out.println(dbka.getNeedPostList().get(1).getNeedTitle());
-        //System.out.println(i);
-            
-        
-        
-        //dbka.kullaniciListesi();
-        //dbka.sifreKontrol();      
-        
-        // System.out.println(dbka.sifreKontrol());
-      
-    }
-    
+           
     /**
      * Method for editing profile
      * checks for username
@@ -509,6 +483,32 @@ public class bean {
         }
         //System.out.print("HEEEYYY");       
         return "homepage?faces-redirect=true";
+    }
+    
+    
+    public static void main(String arg[]) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
+        bean dbka=new bean("elif", "keles", "01.01.1901", "elif@hotmail.com", "elif1", "pass123", "tr", "kocaeli", "gebze", "simpleAddress", "Needtitle", 5, "SimpleDefinition", 0);
+        dbka.Connect();
+        dbka.getNeedTable();
+        System.out.print("Active need number: ");
+        System.out.print(dbka.getSizeOfActiveNeeds() + "\n" ); 
+        // A lil change for testing.. ok, Now push this commit, 
+        // dbka.setUserName("lol");
+        //dbka.setName("evrem");
+        //dbka.setPassword("dur");
+        dbka.AddNeed();
+        //dbka.save();
+        //int i=dbka.getNeedTable().size();
+        //System.out.println(dbka.getNeedPostList().get(1).getNeedTitle());
+        //System.out.println(i);
+            
+        
+        
+        //dbka.kullaniciListesi();
+        //dbka.sifreKontrol();      
+        
+        // System.out.println(dbka.sifreKontrol());
+      
     }
         
 }
