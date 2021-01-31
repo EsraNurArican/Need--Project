@@ -28,8 +28,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 @ManagedBean
-@RequestScoped
+@ApplicationScoped
 
+/**
+ * Class to keep the user information
+ */
 public class bean {
     String name;
     String surname;
@@ -51,15 +54,54 @@ public class bean {
     public List<NeedPostInformations> needPostList;
     int sizeOfActiveNeeds;
 
-    public int getSizeOfActiveNeeds() {
-        return sizeOfActiveNeeds;
-    }
-
-    public void setSizeOfActiveNeeds(int sizeOfActiveNeeds) {
-        this.sizeOfActiveNeeds = sizeOfActiveNeeds;
+    /**
+     * No parameter constructor 
+     * @return 
+     */
+    public bean()
+    {}
+    
+    /**
+     * Constructor for testing
+     * Initializing the below elements
+     * @param name
+     * @param surname
+     * @param birthday
+     * @param email
+     * @param userName
+     * @param password
+     * @param country
+     * @param city
+     * @param district
+     * @param address 
+     * @param titleOfNeed 
+     * @param numberOfNeed 
+     * @param definition 
+     * @param sizeOfActiveNeed 
+     */
+    public bean(String name,String surname, String birthday,String email,String userName,String password,String country,
+            String city,String district,String address, String titleOfNeed, int numberOfNeed, String definition,
+            int sizeOfActiveNeed)
+    {
+        this.address=address;
+        this.birthday= birthday;
+        this.city=city;
+        this.country=country;
+        this.district=district;
+        this.email=email;
+        this.name=name;
+        this.password=password;
+        this.surname= surname;
+        this.userName=userName;
+        this.titleOfNeed= titleOfNeed;
+        this.numberOfNeed=numberOfNeed;
+        this.definition=definition;
+        this.sizeOfActiveNeeds=sizeOfActiveNeed;
+        
     }
     
-
+    /* Getter and Setter Methods */
+    
     public String getName() {
         return name;
     }
@@ -132,20 +174,28 @@ public class bean {
         this.district = district;
     }
     
+    public int getSizeOfActiveNeeds() {
+        return sizeOfActiveNeeds;
+    }
+
+    public void setSizeOfActiveNeeds(int sizeOfActiveNeeds) {
+        this.sizeOfActiveNeeds = sizeOfActiveNeeds;
+    }
+    
      public String getTitleOfNeed() {
         return titleOfNeed;
     }
-
+    
+    public void setTitleOfNeed(String titleOfNeed) {
+        this.titleOfNeed = titleOfNeed;
+    }
+     
     public List<NeedPostInformations> getNeedPostList() {
         return needPostList;
     }
 
     public void setNeedPostList(List<NeedPostInformations> needPostList) {
         this.needPostList = needPostList;
-    }
-
-    public void setTitleOfNeed(String titleOfNeed) {
-        this.titleOfNeed = titleOfNeed;
     }
 
     public int getNumberOfNeed() {
@@ -173,7 +223,7 @@ public class bean {
     }
     
     public Connection Connect(){
-      System.out.println("connect testi");
+      System.out.println("Connection test...");
         try{
         
         Class.forName("org.apache.derby.jdbc.ClientDriver").newInstance();
@@ -188,9 +238,8 @@ public class bean {
             
     }
     
-     public String save(){
+    public String save(){
          
-        System.out.println("ffs");
         PreparedStatement ps=null;
         Connection con=null;
         try{
@@ -225,37 +274,52 @@ public class bean {
                 System.out.println(e);
             }
         }
-        return null;
+        return "homepage?faces-redirect=true";
     }
      
+    /**
+     * Method to check the username and password pair
+     * @param kullaniciAdi
+     * @param sifre
+     * @return
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     public boolean userControl(String kullaniciAdi ,String sifre) throws ClassNotFoundException, SQLException{
          Connection conn=null;
          if(conn==null)
         {
-             Class.forName("org.apache.derby.jdbc.ClientDriver");
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
             conn=DriverManager.getConnection("jdbc:derby://localhost:1527/Need","ari","need");
         }
         try {
-            System.out.println("is kosulu");
+            System.out.println("Conditions...");
             if(conn!=null){ 
                 Statement stmt=conn.createStatement();
 
-                System.out.println("kullanici  adi\t sifre\t isim\t telefon");
+                System.out.println("Username\t Password\t Name\t Telephone");
 
-                ResultSet rs=stmt.executeQuery("select password from userınformation where name='"+kullaniciAdi+"'");
-                rs.next();
-                return sifre.equals(rs.getString(1));
+                ResultSet rs=stmt.executeQuery("select password from userinformation where username='"+kullaniciAdi+"'");
+                rs.next(); 
+                return sifre.equals(rs.getString("password"));
             }
         }
-        catch(SQLException e){
-        }
-        return false;      
+        catch(SQLException e)
+        {}
+        return false;  
     }
     
+    /**
+     * Method to check if the password is correct or not
+     * If correct, directs user to homepage
+     * if not, asks again 
+     * @return
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     public String passwordCheck() throws ClassNotFoundException, SQLException{
-         
-        bean dbk=new bean();
-        if(dbk.userControl(name, password)==true)
+        
+        if(this.userControl(userName, password) ==true)
         {
             return "homepage?faces-redirect=true";
         }
@@ -265,6 +329,14 @@ public class bean {
         }        
     }
     
+    /**
+     * Method to add Need 
+     * @return homepage if the adding action is successful
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws InstantiationException
+     * @throws IllegalAccessException 
+     */
     public String AddNeed() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException
     {
         
@@ -280,11 +352,16 @@ public class bean {
             ResultSet rs;
             System.out.println("add need metodundayım");
             System.out.println(getName());
-            rs = stmt.executeQuery("SELECT username FROM USERINFORMATION WHERE name='"+getName()+"' AND password='"+getPassword()+"'");
+            rs = stmt.executeQuery("SELECT username FROM USERINFORMATION WHERE username='"+getUserName()+"' AND password='"+getPassword()+"'");
+            int type = rs.getType();
+            System.out.print(type);
+              
+    
             String idkisix = null;
             while ( rs.next() ) {
-
-                idkisix = rs.getString(userName);
+                System.out.print("dplsdcğspl");
+                idkisix = rs.getString("username");
+                 System.out.print(idkisix);
 
             }
 
@@ -294,6 +371,7 @@ public class bean {
             ps.setInt(2, numberOfNeed);
             ps.setString(3, definition);
             ps.setString(4, address);
+            System.out.print(idkisix);
             ps.setString(5, idkisix);
 
 
@@ -341,7 +419,7 @@ public class bean {
             return liste;//Return liste.
         } 
         catch (ClassNotFoundException | SQLException exception) {
-            System.out.println("Bir hata meydana geldi:"+exception);
+            System.out.println("An error occured! :"+exception);
             return null;
         }
         finally{ //try'a da düşse catch'e de bu bloktaki kod çalıştırılacak.
@@ -353,43 +431,84 @@ public class bean {
                     ps.close();
                 }
             } catch (SQLException sqlException) {
-                System.out.println("Bir hata meydana geldi:"+sqlException);
+                System.out.println("An error occured! :"+sqlException);
             }
         }
     }
-    
-    public int getActiveNeedsSize(){
+           
+    /**
+     * Method for editing profile
+     * checks for username
+     * @return 
+     */
+    public String edit(){
+         
+        PreparedStatement ps=null;
+        Connection con=null;
+                
+        try{
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+            con=DriverManager.getConnection("jdbc:derby://localhost:1527/Need","ari","need");
+            
+            //ps=con.prepareStatement("INSERT INTO userinformation(NAME, SURNAME, BIRTHDATE, EMAIL, USERNAME, PASSWORD, COUNTRY,CITY,DISTRICT) VALUES(?,?,?,?,?,?,?,?,?)");
+            ps= con.prepareStatement("update userinformation set NAME=?, SURNAME=?, BIRTHDATE=?, EMAIL=?, PASSWORD=?, COUNTRY=?, CITY=?, DISTRICT=? where USERNAME='" +getUserName()+"'");
+            
+            ps.setString(1, name);
+            ps.setString(2, surname);
+            ps.setString(3, birthday);
+            ps.setString(4, email);            
+            ps.setString(5, password);
+            ps.setString(6, country);
+            ps.setString(7, city);
+            ps.setString(8, district);            
+            //ps.setString(9, oldUserName);            
+            
+            ps.executeUpdate();  
+        }
         
-        System.out.println("htmlde cagırdıgım fonskitonun sonucu:");
-        System.out.println(this.sizeOfActiveNeeds);
-        return this.sizeOfActiveNeeds;
-    
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        finally 
+        {
+            try{
+            con.close();
+            ps.close();
+            }
+            catch(SQLException e)
+            {
+                System.out.println(e);
+            }
+        }
+        //System.out.print("HEEEYYY");       
+        return "homepage?faces-redirect=true";
     }
     
-     
+    
     public static void main(String arg[]) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
-        bean dbka=new bean();
-         dbka.Connect();
-         dbka.getNeedTable();
-         dbka.getActiveNeedsSize();
-         // A lil change for testing.. ok, Now push this commit, 
+        bean dbka=new bean("elif", "keles", "01.01.1901", "elif@hotmail.com", "elif1", "pass123", "tr", "kocaeli", "gebze", "simpleAddress", "Needtitle", 5, "SimpleDefinition", 0);
+        dbka.Connect();
+        dbka.getNeedTable();
+        System.out.print("Active need number: ");
+        System.out.print(dbka.getSizeOfActiveNeeds() + "\n" ); 
+        // A lil change for testing.. ok, Now push this commit, 
         // dbka.setUserName("lol");
         //dbka.setName("evrem");
         //dbka.setPassword("dur");
-        //dbka.AddNeed();
-       //dbka.save();
-       //int i=dbka.getNeedTable().size();
-       //System.out.println(dbka.getNeedPostList().get(1).getNeedTitle());
-       //System.out.println(i);
-       
-      
+        dbka.AddNeed();
+        //dbka.save();
+        //int i=dbka.getNeedTable().size();
+        //System.out.println(dbka.getNeedPostList().get(1).getNeedTitle());
+        //System.out.println(i);
+            
         
         
-      // dbka.kullaniciListesi();
-      //  dbka.sifreKontrol();
+        //dbka.kullaniciListesi();
+        //dbka.sifreKontrol();      
         
         // System.out.println(dbka.sifreKontrol());
       
     }
-    
+        
 }

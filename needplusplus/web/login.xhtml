@@ -29,9 +29,9 @@
                 <div class="modal-body" >
                     <h:form><center>
                         <br/>
-                        <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Name" value="#{bean.name}"/><br/><br/>
+                        <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Username" value="#{bean.userName}"/><br/><br/>
 
-                        <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Password" value="#{bean.password}"/><br/>
+                        <h:inputSecret p:style="background-color:#f8d15c; width:250px" p:placeholder="Password" value="#{bean.password}"/><br/>
                       
 
                         <div id="menu">
@@ -42,10 +42,9 @@
                             <div>    
                                 <h:commandButton class="btn btn-secondary btn-lg" style="width:250px" value="Log in"  
                                                  action="#{bean.passwordCheck()}" 
-                                                   />   <h:commandButton/>
+                                                   />   
                                 
                             </div>
-                            <!-- Baglandıgı yer dogru mu bilmiyorum????!!! --> 
                             
                             <div>  
                               <br/> 
