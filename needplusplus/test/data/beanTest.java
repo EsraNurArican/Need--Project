@@ -513,19 +513,6 @@ public class beanTest
         assertEquals(expResult, result);
         
     }
-
-    /**
-     * Test of main method, of class bean.
-     */
-    @Test
-    public void testMain() throws Exception 
-    {
-        System.out.println("main");
-        String[] arg = null;
-        bean.main(arg);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }    
     
     /**
      * Test of edit method, of class bean.
@@ -541,5 +528,18 @@ public class beanTest
         //fail("The test case is a prototype.");
                 
     }
+    
+    /**
+     * Test of main method, of class bean.
+     */
+    @Test
+    public void testMain() throws Exception 
+    {
+        System.out.println("main");
+        String[] arg = null;
+        bean.main(arg);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }    
     
 }
