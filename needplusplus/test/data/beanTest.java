@@ -527,4 +527,19 @@ public class beanTest
         //fail("The test case is a prototype.");
     }    
     
+    /**
+     * Test of edit method, of class bean.
+     */
+    @Test
+    public void testEdit() {
+        System.out.println("edit");
+        bean instance=new bean("elif", "keles", "01.01.1901", "elif@hotmail.com", "elif1", "pass123", "tr", "kocaeli", "gebze", "simpleAddress", "Needtitle", 5, "SimpleDefinition", 0);
+        String expResult = "homepage?faces-redirect=true";
+        String result = instance.edit();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+                
+    }
+    
 }
