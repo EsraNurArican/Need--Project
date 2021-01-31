@@ -359,7 +359,7 @@ public class bean {
     
             String idkisix = null;
             while ( rs.next() ) {
-System.out.print("dplsdcğspl");
+                System.out.print("dplsdcğspl");
                 idkisix = rs.getString("username");
                  System.out.print(idkisix);
 
@@ -460,6 +460,55 @@ System.out.print("dplsdcğspl");
         
         // System.out.println(dbka.sifreKontrol());
       
+    }
+    
+    /**
+     * Method for editing profile
+     * checks for username
+     * @return 
+     */
+    public String edit(){
+         
+        PreparedStatement ps=null;
+        Connection con=null;
+                
+        try{
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+            con=DriverManager.getConnection("jdbc:derby://localhost:1527/Need","ari","need");
+            
+            //ps=con.prepareStatement("INSERT INTO userinformation(NAME, SURNAME, BIRTHDATE, EMAIL, USERNAME, PASSWORD, COUNTRY,CITY,DISTRICT) VALUES(?,?,?,?,?,?,?,?,?)");
+            ps= con.prepareStatement("update userinformation set NAME=?, SURNAME=?, BIRTHDATE=?, EMAIL=?, PASSWORD=?, COUNTRY=?, CITY=?, DISTRICT=? where USERNAME='" +getUserName()+"'");
+            
+            ps.setString(1, name);
+            ps.setString(2, surname);
+            ps.setString(3, birthday);
+            ps.setString(4, email);            
+            ps.setString(5, password);
+            ps.setString(6, country);
+            ps.setString(7, city);
+            ps.setString(8, district);            
+            //ps.setString(9, oldUserName);            
+            
+            ps.executeUpdate();  
+        }
+        
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        finally 
+        {
+            try{
+            con.close();
+            ps.close();
+            }
+            catch(SQLException e)
+            {
+                System.out.println(e);
+            }
+        }
+        //System.out.print("HEEEYYY");       
+        return "homepage?faces-redirect=true";
     }
         
 }
