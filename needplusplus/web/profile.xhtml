@@ -34,33 +34,36 @@
                         
 	
                         <h:form><center>
+                                
+                            <h:outputText p:style="background-color:#f8d15c; width:250px" value="Welcome #{bean.getUserName()}    " /><br/><br/>
                             
-                            <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Sample Name" value="#{managedBeanSinifi.name}"  /><br/><br/>
+                            <h:outputText p:style="background-color:white; width:250px" value="To be able to edit, please fill in all the boxes below " /><br/><br/>
+                            
+                            <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Name" value="#{bean.name}" required="true" requiredMessage="Name can not be empty !!"  /><br/><br/>
 
-                            <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Sample Surname" value="#{managedBeanSinifi.surname}"/><br/><br/>
+                            <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Surname" value="#{bean.surname}" required="true" requiredMessage="Surname can not be empty !!"/><br/><br/>
+                            
+                            <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Birthday" value="#{bean.birthday}" required="true" requiredMessage="Birthday can not be empty !!" /><br/><br/>
 
-                            <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Sample Birthday" value="#{managedBeanSinifi.birthday}" /><br/><br/>
+                            <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="E-mail" value="#{bean.email}" required="true" requiredMessage="Email can not be empty !!"/><br/><br/>
 
-                            <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Sample E-mail" value="#{managedBeanSinifi.mail}"/><br/><br/>
+                            <!--h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Edit User name" value="#{bean.userName}"/><br/><br/> --> 
 
-                            <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Sample User name" value="#{managedBeanSinifi.user_name}"/><br/><br/>
-
-                            <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Sample Password" value="#{managedBeanSinifi.password}"/><br/><br/>
+                            <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Password" value="#{bean.password}" required="true" requiredMessage="Password can not be empty !!"/><br/><br/>
                     <!--        <small id="passwordHelpInline" class="text-muted">Contain letters and numbers</small><br/><br/>  -->
-                            <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Password Again" value="#{managedBeanSinifi.password}"/><br/><br/> 
 
-                            <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Sample Country" value="#{managedBeanSinifi.country}"/><br/><br/>
+                            <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Country" value="#{bean.country}" required="true" requiredMessage="Country can not be empty !!"/><br/><br/>
 
-                            <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Sample City" value="#{managedBeanSinifi.city}"/><br/><br/>
+                            <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="City" value="#{bean.city}" required="true" requiredMessage="City can not be empty !!"/><br/><br/>
 
-                            <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="Sample District" value="#{managedBeanSinifi.district}"/><br/><br/>
+                            <h:inputText p:style="background-color:#f8d15c; width:250px" p:placeholder="District" value="#{bean.district}" required="true" requiredMessage="District can not be empty !!"/><br/><br/>
 
                             <div id="menu">
                             <div>    
-                                <h:commandButton class="btn btn-secondary btn-lg" style="width:250px" value="Edit" action="homepage.xhtml" /></div>
-                                <!-- Baglandıgı yer dogru mu bilmiyorum????!!! --> 
+                                <h:commandButton class="btn btn-secondary btn-lg" style="width:250px" value="Edit" action="#{bean.edit()}" /></div> <!-->action="homepage.xhtml" /></div> -->
+                                
                             </div>
-                    <!-- <button type="button" class="btn btn-secondary btn-lg" action="#{managedBeanSinifi.kaydet()} " >Sign up</button> --> 
+                    <!-- <button type="button" class="btn btn-secondary btn-lg" action="#{bean.save()} " >Sign up</button> --> 
 
 
                      </center></h:form>
