@@ -1,5 +1,5 @@
 # Need--Project
-Need ++ was designed to be a social aid themed web application and we continue to develop our project.
+Need ++ was designed to be a social aid themed web application.
 
 You can review our final report for all the details of the project
 
